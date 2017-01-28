@@ -9,7 +9,7 @@ var TodoList = React.createClass({
                 return (
                     // When you generating a multiple instances, you must provide unique key props for React to generate
                     //{...todo} is the same as spreading each children into its own property: id={todo.id} text={todo.text}
-                    <Todo key={todo.id} {...todo} />
+                    <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/>
                 )
             });
         };
