@@ -24,7 +24,7 @@ module.exports = {
     root: __dirname,
     modulesDirectories: [
       'node_modules',
-      './app/components'
+      './app/components',
     ],
     alias: {
       applicationStyles: 'app/styles/app.scss'
