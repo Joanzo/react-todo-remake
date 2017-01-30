@@ -1,4 +1,4 @@
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 var moment = require('moment');
 
 export var searchTextReducer = (state = '', action) => {
@@ -43,10 +43,10 @@ export var todosReducer = (state = [], action) => {
                         completedAt : nextCompleted ? moment().unix(): undefined
                     }
                     return todoTemp;
-                } /*else {
+                } else {
                     return todo;
-                }*/
-                
+                }
+
             });
             return updatedTodos;
         default:

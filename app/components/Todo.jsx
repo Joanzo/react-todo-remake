@@ -3,7 +3,7 @@ var {connect} = require('react-redux');
 var moment = require('moment');
 var actions = require('actions');
 
-var Todo = React.createClass({
+export var Todo = React.createClass({
     handleChange: function() {
         // just to rmeove the warning
     },
@@ -13,15 +13,15 @@ var Todo = React.createClass({
         var renderDate = () => {
             var message = 'Created ';
             var timestamp = createdAt;
-            
+
             if (completed) {
                 message = 'Completed ';
                 timestamp = completedAt;
             }
-            
+
             return message + moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
         };
-        
+
         return (
             <div className={todoClassName} onClick={() => {
                 //this.props.onToggle(id);
@@ -39,6 +39,4 @@ var Todo = React.createClass({
     }
 });
 
-module.exports = connect(
-    
-)(Todo);
+export default connect()(Todo);
