@@ -43,20 +43,7 @@ export var startAddTodos = () => {
         }, (e) => {
             console.log('Unable to fetch value', e);
         });
-/*        var todo = {
-            text,
-            completed: false,
-            createdAt: moment().unix(),
-            completedAt: null
-        };
-        var todoRef = firebaseRef.child('todos').push(todo);
 
-        return todoRef.then(() => {
-            dispatch(addTodo({
-                ...todo,
-                id: todoRef.key
-            }));
-        });*/
     };
 };
 
