@@ -22,6 +22,44 @@ export var addTodos = (todos) => {
     }
 };
 
+export var startAddTodos = () => {
+    return (dispatch, getState) => {
+        var todosRef = firebaseRef.child('todos');
+        
+        return todosRef.once('value').then((snapshot) => {
+            var todos = snapshot.val() || {};
+            var arrTodos = [];
+
+            // Convert objects with keys to array
+            Object.keys(todos).forEach(function(key) {
+                arrTodos.push({
+                    id: key,
+                    ...todos[key]
+                });
+            });
+
+            dispatch(addTodos(arrTodos));
+            
+        }, (e) => {
+            console.log('Unable to fetch value', e);
+        });
+/*        var todo = {
+            text,
+            completed: false,
+            createdAt: moment().unix(),
+            completedAt: null
+        };
+        var todoRef = firebaseRef.child('todos').push(todo);
+
+        return todoRef.then(() => {
+            dispatch(addTodo({
+                ...todo,
+                id: todoRef.key
+            }));
+        });*/
+    };
+};
+
 export var startAddTodo = (text) => {
     return (dispatch, getState) => {
         var todo = {
