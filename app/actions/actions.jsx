@@ -81,7 +81,6 @@ export var updateTodo = (id, updates) => {
     }
 };
 
-
 export var startToggleTodo = (id, completed) => {
     return (dispatch, getState) => {
         var todoRef = firebaseRef.child(`todos/${id}`);
@@ -95,6 +94,14 @@ export var startToggleTodo = (id, completed) => {
     };
 }
 
+export var login = (uid) => {
+    return {
+        type: 'LOGIN',
+        uid
+    };
+};
+
+
 export var startLogin = () => {
     return (dispatch, getState) => {
         firebase.auth().signInWithPopup(githubProvider).then((result) => {
@@ -104,6 +111,12 @@ export var startLogin = () => {
         });
     };
 }
+
+export var logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+};
 
 export var startLogout = () => {
     return (dispatch, getState) => {
