@@ -1,6 +1,6 @@
-var expect = require('expect');
-var df = require('deep-freeze-strict');
-var reducers = require('reducers');
+import expect from 'expect';
+import df from 'deep-freeze-strict';
+import * as reducers from 'reducers';
 
 describe('Reducers', () => {
     describe('searchTextReducer', () => {
@@ -121,7 +121,7 @@ describe('Reducers', () => {
 
         });
     });
-    
+
     describe('authReducer', () => {
         it('should store uid on LOGIN', () => {
             const action = {

@@ -1,10 +1,10 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-var expect = require('expect');
+import expect from 'expect';
 
 import firebase, {firebaseRef} from 'app/firebase/';
-var actions = require('actions');
+import * as actions from 'actions';
 
 var createMockStore = configureMockStore([thunk]);
 
@@ -104,7 +104,7 @@ describe('Actions', () => {
             firebase.auth().signInAnonymously().then((user) => {
                 uid = user.uid;
                 todosRef = firebaseRef.child(`users/${uid}/todos`);
-                
+
                 return todosRef.remove();
             }).then(() => {
                 testTodoRef = todosRef.push();
@@ -121,7 +121,7 @@ describe('Actions', () => {
         afterEach((done) => {
             todosRef.remove().then(() => done());
         });
-        
+
 
         it('should toggle todo and dispatch UPDATE_TODO action', (done) => {
             const store = createMockStore({auth: {uid}});
@@ -151,7 +151,7 @@ describe('Actions', () => {
 
             store.dispatch(action).then(() => {
                 const mockActions = store.getActions();
-                
+
                 expect(mockActions[0].type).toEqual('ADD_TODOS');
                 expect(mockActions[0].todos.length).toEqual(1);
                 expect(mockActions[0].todos[0].text).toEqual('Something to do');
